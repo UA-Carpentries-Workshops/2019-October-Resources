@@ -101,7 +101,7 @@ Just to note, we don't need to put these on separate lines, and we don't need to
 for word in earth mars venus; do echo $word; done
 ```
 
-We can also do multiple things within the body of the loop (the lines between the special words **`do`** and **`done`**). Here we'll add another line that also writes the words into a file we'll call "words.txt":
+We can also do multiple things within the body of the loop (the lines between the special words **`do`** and **`done`**). Here we'll add another line that also writes the words into a file we'll call "planets.txt":
 
 ```bash
 for item in earth mars venus
@@ -189,7 +189,7 @@ We're going to use the **`cat`** command to help us do this (which comes from co
 cat planets.txt
 ```
 
-Here we'll use **`cat`** to pull the items we want to loop over from the file, instead of us needing to type them out like we did above. The syntax of how to do this may seem a little odd at first, but let's look at it and then break it down. Here is an example with our "words.txt" file we just made:
+Here we'll use **`cat`** to pull the items we want to loop over from the file, instead of us needing to type them out like we did above. The syntax of how to do this may seem a little odd at first, but let's look at it and then break it down. Here is an example with our "planets.txt" file we just made:
 
 ```bash
 for item in $(cat planets.txt)
@@ -198,7 +198,7 @@ do
 done
 ```
 
-Here, where we say **`$(cat words.txt)`**, the command line is performing that operation first (it's evaluting what's inside the parentheses, similar to what the dollar sign does when put in front of our variable name, "item"), and then puts the output in its place. We can use **`echo`** to see this has the same result as when we typed the items out:
+Here, where we say **`$(cat planets.txt)`**, the command line is performing that operation first (it's evaluting what's inside the parentheses, similar to what the dollar sign does when put in front of our variable name, "item"), and then puts the output in its place. We can use **`echo`** to see this has the same result as when we typed the items out:
 
 ```bash
 echo $(cat planets.txt)
