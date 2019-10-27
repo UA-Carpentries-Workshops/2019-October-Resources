@@ -43,7 +43,6 @@ What is the average life expectancy?
 What is the largest population?  
 
 
-\pagebreak
 
 
 # Exercise 2 : ggplot
@@ -62,7 +61,6 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp)) +
 </details>
 
 
-\pagebreak
 
 ### 3b. Try to add color.  
 There is a color argument for the aes function  
@@ -82,8 +80,6 @@ ggplot(data = gapminder, mapping = aes(x = year, y = lifeExp, color = continent)
 </details>
 
 
-\pagebreak
-
 ### 3c. Switch the order of the geom_ functions. What happened?
 <details>
   <summary>Solution</summary>
@@ -98,7 +94,7 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
 </details>
 
 
-\pagebreak
+
 
 ### 3d. Change the color and size of the points outside of aes.   
 Note: ?geom_point
@@ -117,7 +113,6 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 
 
 
-\pagebreak
 
 ### 3e. Now change the shape of the points and color the points by the continent  
 Note: You'll get multiple linear model fits  
@@ -137,7 +132,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color = conti
 </details>
  
 
-\pagebreak
+
 
 ### 3f. Create a density plot of GDP per capita, filled by continent.  
 Advanced: Transform the x axis to better visualise the data spread.  
@@ -162,7 +157,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
 </details>
 
 
-\pagebreak 
+
 
 # Exercise 3: loops
 ### Write a script that loops through the gapminder data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.
@@ -191,7 +186,7 @@ for(cont in unique(gapminder$continent)){
   </p>
 </details>
 
-\pagebreak  
+  
 
 #Exercise 4: Dplyr
 #### 4a. Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for lifeExp, country and year, but not for other Continents. How many rows does your dataframe have and why?
