@@ -188,7 +188,7 @@ for(cont in unique(gapminder$continent)){
 
   
 
-#Exercise 4: Dplyr
+# Exercise 4: Dplyr
 #### 4a. Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for lifeExp, country and year, but not for other Continents. How many rows does your dataframe have and why?
 
 <details>
