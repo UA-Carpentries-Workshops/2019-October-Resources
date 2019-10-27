@@ -190,22 +190,25 @@ for(cont in unique(gapminder$continent)){
 #### Make a ggplot of the lifeExp vs year for the continents whose mean life expectancy is higher than average 
 
 <details>
-  <summary>Solution</summary>
-  <p>
-# Answer:
-conts = c()
-for( cont in gapminder$continent){
-  tmp <- mean(gapminder[gapminder$continent == cont, "lifeExp"])
+<summary>Solution</summary>
+<p>
   
-  if(tmp > meanLifeExp){
-    conts = c(conts, TRUE)
-  }
-  else{
-    conts = c(conts, FALSE)
-  }
-}
-continentsLongLived <- gapminder[conts,]
-ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=country)) + geom_point() + geom_line()
+# Answer:
+```{r}
+conts = c()  
+for( cont in gapminder$continent){  
+  tmp <- mean(gapminder[gapminder$continent == cont, "lifeExp"])  
+    
+  if(tmp > meanLifeExp){    
+    conts = c(conts, TRUE)  
+  }    
+  else{  
+    conts = c(conts, FALSE)  
+  }  
+}  
+continentsLongLived <- gapminder[conts,]  
+ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=country)) + geom_point() + geom_line()  
+```
 
  </p>
 </details>
@@ -215,7 +218,9 @@ ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=countr
 <details>
   <summary>Solution</summary>
   <p>
+    
 Answer:
+```{r}
 countries <- c()
 for( count in gapminder$country){
   tmp <- mean(gapminder[gapminder$country == count, "lifeExp"])
@@ -228,7 +233,7 @@ for( count in gapminder$country){
     countries= c(countries, FALSE)
   }
 }
-
+```
 shortLivedConutries <- gapminder[countries,]
 ggplot(shortLivedConutries, aes(x = gdpPercap, y = lifeExp, color=continent)) + geom_point()
  </p>
@@ -241,7 +246,7 @@ ggplot(shortLivedConutries, aes(x = gdpPercap, y = lifeExp, color=continent)) + 
 <details>
   <summary>Solution</summary>
   <p>
-
+    
 ```{r}
 year_country_lifeExp_Africa <- gapminder %>%
   filter(continent == "Africa") %>%
@@ -291,6 +296,7 @@ gapminder %>%
 <details>
   <summary>Solution</summary>
   <p>
+    
 ```{r}
 gapminder %>% 
   select(continent, lifeExp, year) %>%  
@@ -306,7 +312,9 @@ gapminder %>%
 <details>
   <summary>Solution</summary>
   <p>
-```{r}    
+    
+```{r}  
+    
 gapminder %>% 
   select(country, lifeExp, gdpPercap,continent) %>% 
   group_by(country) %>% 
