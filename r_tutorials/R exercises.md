@@ -160,6 +160,43 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, fill=continent)) +
 
 
 # Exercise 3: loops
+
+## Exercise 3a.  
+If we have the following code:  
+```{r eval=FALSE}
+x <- 0
+if(x > 0) {
+  print('Positive number')
+} else {
+  print('Negative number')
+}
+```
+What gets printed:
+>A. "Positive number"  
+B. "Negative number"  
+C. Nothing gets printed  
+D. Computer crashes and sets on fire  
+
+## Exercise 3b.  
+If we have the following code:  
+```{r eval=FALSE}
+x <- 'a'
+if (x>0){
+  print('Positive number')
+} else if (x<0) { 
+  print('Negative number')
+} else if (x=='a'){
+  print('aaaaaaaaa')
+} else{
+    print('Zero')
+}
+```
+>A. "Positive number"  
+B. "Negative number"  
+C. "aaaaaaaaa"  
+D. "Zero"  
+
+## Exercise 3c.
 ### Write a script that loops through the gapminder data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.
 
 <details>
@@ -186,7 +223,8 @@ for(cont in unique(gapminder$continent)){
   </p>
 </details>
 
-# Day 1 Challenge! 
+
+# Day 2 Challenge! 
 #### Make a ggplot of the lifeExp vs year for the continents whose mean life expectancy is higher than average 
 
 <details>
