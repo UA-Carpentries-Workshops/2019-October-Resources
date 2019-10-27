@@ -186,7 +186,54 @@ for(cont in unique(gapminder$continent)){
   </p>
 </details>
 
+# Day 1 Challenge! 
+#### Make a ggplot of the lifeExp vs year for the continents with a higher than average life expectancy
+
+<details>
+  <summary>Solution</summary>
+  <p>
+# Answer:
+conts = c()
+for( cont in gapminder$continent){
+  tmp <- mean(gapminder[gapminder$continent == cont, "lifeExp"])
   
+  if(tmp > meanLifeExp){
+    conts = c(conts, TRUE)
+  }
+  else{
+    conts = c(conts, FALSE)
+  }
+}
+continentsLongLived <- gapminder[conts,]
+ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=country)) + geom_point() + geom_line()
+
+ </p>
+</details>
+
+#### Alternative Challenge
+#### Make a ggplot of the lifeExp vs year for the countries with a higher than average life expectancy
+<details>
+  <summary>Solution</summary>
+  <p>
+Answer:
+countries <- c()
+for( count in gapminder$country){
+  tmp <- mean(gapminder[gapminder$country == count, "lifeExp"])
+  
+  if(tmp < meanLifeExp){
+    #print(paste("Average Life Expectancy in", count, "is more than", meanLifeExp, "plotting life expectancy graph..."))
+    countries = c(countries, TRUE)
+  }
+  else{
+    countries= c(countries, FALSE)
+  }
+}
+
+shortLivedConutries <- gapminder[countries,]
+ggplot(shortLivedConutries, aes(x = gdpPercap, y = lifeExp, color=continent)) + geom_point()
+ </p>
+</details>
+
 
 # Exercise 4: Dplyr
 #### 4a. Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the African values for lifeExp, country and year, but not for other Continents. How many rows does your dataframe have and why?
@@ -204,8 +251,6 @@ head(year_country_lifeExp_Africa)
 
   </p>
 </details>
-
-
 
 
 #### 4b. Create a new dataframe that contains the minimum (MinExp) and maximum (MaxExp) life expectancies for each country.
@@ -239,4 +284,50 @@ gapminder %>%
 ```
 
   </p>
+</details>
+
+### 4d. Challenge re-run: Make a ggplot of the lifeExp vs year for the continents with a higher than average life expectancy
+
+<details>
+  <summary>Solution</summary>
+  <p>
+# Answer:
+conts = c()
+for( cont in gapminder$continent){
+  tmp <- mean(gapminder[gapminder$continent == cont, "lifeExp"])
+  
+  if(tmp > meanLifeExp){
+    conts = c(conts, TRUE)
+  }
+  else{
+    conts = c(conts, FALSE)
+  }
+}
+continentsLongLived <- gapminder[conts,]
+ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=country)) + geom_point() + geom_line()
+
+ </p>
+</details>
+
+#### 4e. Alt challenge re-run: Make a ggplot of the lifeExp vs year for the countries with a higher than average life expectancy
+<details>
+  <summary>Solution</summary>
+  <p>
+Answer:
+countries <- c()
+for( count in gapminder$country){
+  tmp <- mean(gapminder[gapminder$country == count, "lifeExp"])
+  
+  if(tmp < meanLifeExp){
+    #print(paste("Average Life Expectancy in", count, "is more than", meanLifeExp, "plotting life expectancy graph..."))
+    countries = c(countries, TRUE)
+  }
+  else{
+    countries= c(countries, FALSE)
+  }
+}
+
+shortLivedConutries <- gapminder[countries,]
+ggplot(shortLivedConutries, aes(x = gdpPercap, y = lifeExp, color=continent)) + geom_point()
+ </p>
 </details>
