@@ -19,7 +19,21 @@ for(i in 1:3){
 }
 }
 ```
+
+# Let's try out a for loop and make varibles
+### In this exercise, we want to make a vector that contains the square of the integers from a vector 
+```{r eval=FALSE}
+m <- c()
+m
+for (i in 1:5){
+  m = c(m,i^2)
+  print(m)
+}
+print(m)
+```
+
 # With gapminder
+# Maybe exercise
 ```{r eval=FALSE}
 gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", stringsAsFactors = FALSE)
 ```
@@ -41,18 +55,6 @@ for(blah in unique(gapminder$continent)){
   life.max <- max(gapminder[gapminder$continent == blah, 'lifeExp'])
   print(paste0('The life expectancy in ',blah,' is ',life.min,' to ',life.max))
 }
-```
-
-# Let's try out a for loop 
-### In this exercise, we want to make a vector that contains the square of the integers from a vector 
-```{r eval=FALSE}
-m <- c()
-m
-for (i in 1:5){
-  m = c(m,i^2)
-  print(m)
-}
-print(m)
 ```
 
 ### When coding sometimes you want a particular function to be applied if a condition is true and 
@@ -97,6 +99,21 @@ if(x > 0) {
   print('Zero')
 }
 ```
+
+# Conditional statements care about what is first
+```{r eval=FALSE}
+x <- 'a'
+if (x>0){
+  print('Positive number')
+} else if (x<0) { 
+  print('Negative number')
+} else if (x=='a'){
+  print('aaaaaaaaa')
+} else{
+    print('Zero')
+}
+```
+
 # We can combine loops with if else statments to help filter for specific data
 ```{r eval=FALSE}
 for(x in c(-5,-3,0,1,5)){
