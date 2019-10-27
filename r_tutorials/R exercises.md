@@ -187,7 +187,7 @@ for(cont in unique(gapminder$continent)){
 </details>
 
 # Day 1 Challenge! 
-#### Make a ggplot of the lifeExp vs year for the continents with a higher than average life expectancy
+#### Make a ggplot of the lifeExp vs year for the continents whose mean life expectancy is higher than average 
 
 <details>
   <summary>Solution</summary>
@@ -211,7 +211,7 @@ ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=countr
 </details>
 
 #### Alternative Challenge
-#### Make a ggplot of the lifeExp vs year for the countries with a higher than average life expectancy
+#### Make a ggplot scatterplot of the lifeExp vs GDPperCap for the countries whose average life expectancy is lower than average. Color the graph by continent. 
 <details>
   <summary>Solution</summary>
   <p>
@@ -286,48 +286,37 @@ gapminder %>%
   </p>
 </details>
 
-### 4d. Challenge re-run: Make a ggplot of the lifeExp vs year for the continents with a higher than average life expectancy
+### 4d. Challenge re-run: Make a ggplot of the lifeExp vs year for the continents whose mean life expectancy is higher than average 
 
 <details>
   <summary>Solution</summary>
   <p>
-# Answer:
-conts = c()
-for( cont in gapminder$continent){
-  tmp <- mean(gapminder[gapminder$continent == cont, "lifeExp"])
-  
-  if(tmp > meanLifeExp){
-    conts = c(conts, TRUE)
-  }
-  else{
-    conts = c(conts, FALSE)
-  }
-}
-continentsLongLived <- gapminder[conts,]
-ggplot(continentsLongLived, aes(x = year, y = lifeExp, color=continent,by=country)) + geom_point() + geom_line()
-
+```{r}
+gapminder %>% 
+  select(continent, lifeExp, year) %>%  
+  group_by(continent, year) %>% 
+  summarize(mean_exp = mean(lifeExp)) %>% 
+  filter(mean_exp > meanLifeExp) %>%   
+  ggplot(aes(x = year,y = mean_exp, color=continent)) + geom_line() + geom_point()
+```
  </p>
 </details>
 
-#### 4e. Alt challenge re-run: Make a ggplot of the lifeExp vs year for the countries with a higher than average life expectancy
+#### 4e. Alt challenge re-run: Make a ggplot scatterplot of the lifeExp vs GDPperCap for the countries whose average life expectancy is lower than average. Color the graph by continent.
 <details>
   <summary>Solution</summary>
   <p>
-Answer:
-countries <- c()
-for( count in gapminder$country){
-  tmp <- mean(gapminder[gapminder$country == count, "lifeExp"])
-  
-  if(tmp < meanLifeExp){
-    #print(paste("Average Life Expectancy in", count, "is more than", meanLifeExp, "plotting life expectancy graph..."))
-    countries = c(countries, TRUE)
-  }
-  else{
-    countries= c(countries, FALSE)
-  }
-}
-
-shortLivedConutries <- gapminder[countries,]
-ggplot(shortLivedConutries, aes(x = gdpPercap, y = lifeExp, color=continent)) + geom_point()
+```{r}    
+gapminder %>% 
+  select(country, lifeExp, gdpPercap,continent) %>% 
+  group_by(country) %>% 
+  summarize(mean_le = mean(lifeExp),
+            mean_gdp = mean(gdpPercap),
+            continent = first(continent)) %>% 
+  filter(mean_le < meanLifeExp) %>% 
+  ggplot(aes(x = mean_gdp, y = mean_le, color=continent)) + 
+    geom_point()
+```    
  </p>
 </details>
+
